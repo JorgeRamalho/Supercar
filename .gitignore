@@ -1,0 +1,17 @@
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / IDE
+.vscode/
+.cursor/
+
+# Temporários e placeholders
+*.tmp
+test-lambo.png
+c__Users_jorge_*
+
+# Segredos (se adicionar depois)
+.env
+.env.*
