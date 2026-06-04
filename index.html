@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Super Car — seminovos premium com curadoria, certificação e financiamento ágil em São Paulo."
+    />
+    <title>Super Car | Seminovos Premium</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="ambient" aria-hidden="true">
+      <div class="ambient__orb ambient__orb--gold"></div>
+      <div class="ambient__orb ambient__orb--cyan"></div>
+      <div class="ambient__mesh"></div>
+    </div>
+
+    <header class="header" id="topo">
+      <div class="container header__inner">
+        <a href="#topo" class="logo" aria-label="Super Car — início">
+          <span class="logo__mark">SC</span>
+          <span class="logo__text">
+            <strong>Super</strong>
+            <span>Car</span>
+          </span>
+        </a>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="nav-menu"
+          aria-label="Abrir menu"
+        >
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="nav" id="nav-menu" aria-label="Principal">
+          <a href="#estoque">Estoque</a>
+          <a href="#diferenciais">Diferenciais</a>
+          <a href="#processo">Como funciona</a>
+          <a href="#depoimentos">Depoimentos</a>
+          <a href="#contato" class="nav__cta">Agendar visita</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero__grid">
+          <div class="hero__content">
+            <p class="eyebrow">
+              <span class="eyebrow__dot"></span>
+              Curadoria premium desde 2008
+            </p>
+            <h1 class="hero__title">
+              Potência refinada no
+              <span class="text-gradient">seu próximo capítulo</span>
+            </h1>
+            <p class="hero__lead">
+              Histórico verificado, laudo em 120 pontos e negociação sem ruído.
+              A Super Car entrega a experiência que um seminovo premium exige.
+            </p>
+            <div class="hero__actions">
+              <a href="#estoque" class="btn btn--primary">Explorar estoque</a>
+              <a href="#contato" class="btn btn--ghost">Reservar visita</a>
+            </div>
+            <dl class="hero__stats">
+              <div>
+                <dt>320+</dt>
+                <dd>Entregas realizadas</dd>
+              </div>
+              <div>
+                <dt>4.9</dt>
+                <dd>Nota dos clientes</dd>
+              </div>
+              <div>
+                <dt>48h</dt>
+                <dd>Crédito aprovado</dd>
+              </div>
+            </dl>
+          </div>
+          <div class="hero__visual">
+            <div class="hero-card">
+              <img
+                src="assets/images/hero-lamborghini-huracan.png"
+                alt="Lamborghini Huracán laranja em destaque"
+                width="900"
+                height="600"
+                loading="eager"
+              />
+              <div class="hero-card__badge">
+                <span>Seleção da semana</span>
+                <strong>Lamborghini Huracán</strong>
+                <em>2025 · R$ 2.200.000</em>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="marquee" aria-label="Marcas disponíveis">
+        <div class="marquee__track" id="marquee-track"></div>
+      </section>
+
+      <section class="section" id="estoque">
+        <div class="container">
+          <header class="section__head">
+            <p class="eyebrow"><span class="eyebrow__dot"></span> Catálogo vivo</p>
+            <h2>Seleção em destaque</h2>
+            <p>
+              Filtre por marca, valor ou categoria. Cada unidade certificada em 120 pontos
+              de inspeção antes de entrar na vitrine.
+            </p>
+          </header>
+
+          <div class="filters" role="search">
+            <label class="field">
+              <span>Buscar</span>
+              <input
+                type="search"
+                id="search"
+                placeholder="Modelo, marca..."
+                autocomplete="off"
+              />
+            </label>
+            <label class="field">
+              <span>Marca</span>
+              <select id="filter-brand">
+                <option value="">Todas</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Categoria</span>
+              <select id="filter-category">
+                <option value="">Todas</option>
+                <option value="sedan">Sedan</option>
+                <option value="suv">SUV</option>
+                <option value="hatch">Hatch</option>
+                <option value="pickup">Pickup</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Até (R$)</span>
+              <input type="range" id="filter-price" min="80000" max="350000" step="5000" value="350000" />
+              <output id="price-output">R$ 350.000</output>
+            </label>
+          </div>
+
+          <p class="results-count" id="results-count" aria-live="polite"></p>
+          <div class="catalog" id="catalog"></div>
+        </div>
+      </section>
+
+      <section class="section section--alt" id="diferenciais">
+        <div class="container">
+          <header class="section__head section__head--center">
+            <p class="eyebrow"><span class="eyebrow__dot"></span> A assinatura Super Car</p>
+            <h2>Muito além da vitrine</h2>
+          </header>
+          <div class="features">
+            <article class="feature-card">
+              <div class="feature-card__icon" aria-hidden="true">01</div>
+              <h3>Laudo certificado</h3>
+              <p>
+                Mecânica, elétrica e documentação auditadas. Transparência total até a
+                chave na mão.
+              </p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-card__icon" aria-hidden="true">02</div>
+              <h3>Crédito em alta</h3>
+              <p>
+                Parcerias com os principais bancos. Simulação imediata e resposta em até
+                48 horas.
+              </p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-card__icon" aria-hidden="true">03</div>
+              <h3>Cobertura estendida</h3>
+              <p>
+                Planos opcionais para motor, câmbio e assistência 24h em todo o território
+                nacional.
+              </p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-card__icon" aria-hidden="true">04</div>
+              <h3>Troca inteligente</h3>
+              <p>
+                Avaliação justa do seu usado para fechar negócio no mesmo dia, sem
+                burocracia desnecessária.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="processo">
+        <div class="container process">
+          <header class="section__head">
+            <p class="eyebrow"><span class="eyebrow__dot"></span> Na pista certa</p>
+            <h2>Quatro etapas até a garagem</h2>
+          </header>
+          <ol class="timeline">
+            <li>
+              <span class="timeline__step">1</span>
+              <h3>Escolha com precisão</h3>
+              <p>Explore o catálogo online ou na loja e reserve seu test-drive pelo site ou WhatsApp.</p>
+            </li>
+            <li>
+              <span class="timeline__step">2</span>
+              <h3>Dirija e negocie</h3>
+              <p>Test-drive acompanhado e proposta personalizada com consultor dedicado.</p>
+            </li>
+            <li>
+              <span class="timeline__step">3</span>
+              <h3>Feche com clareza</h3>
+              <p>À vista, financiado ou com troca — toda a documentação sob nosso cuidado.</p>
+            </li>
+            <li>
+              <span class="timeline__step">4</span>
+              <h3>Entrega impecável</h3>
+              <p>Tanque cheio, revisão cortesia e manual do proprietário na hora da retirada.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section section--alt" id="depoimentos">
+        <div class="container">
+          <header class="section__head section__head--center">
+            <p class="eyebrow"><span class="eyebrow__dot"></span> Na voz do cliente</p>
+            <h2>Quem já acelerou conosco</h2>
+          </header>
+          <div class="testimonials">
+            <blockquote class="testimonial">
+              <p>
+                “Levei um BMW seminovo. Histórico transparente e financiamento aprovado no
+                mesmo dia. Experiência à altura do carro.”
+              </p>
+              <footer>
+                <cite>Mariana Costa</cite>
+                <span>São Paulo, SP</span>
+              </footer>
+            </blockquote>
+            <blockquote class="testimonial">
+              <p>
+                “Troquei minha pickup por um SUV. Avaliação justa e equipe que domina o
+                assunto. A Super Car virou minha referência.”
+              </p>
+              <footer>
+                <cite>Ricardo Almeida</cite>
+                <span>Campinas, SP</span>
+              </footer>
+            </blockquote>
+            <blockquote class="testimonial">
+              <p>
+                “Catálogo claro, fotos reais e atendimento humano. Fui só conhecer e saí com
+                o carro certo em menos de uma semana.”
+              </p>
+              <footer>
+                <cite>Patrícia Mendes</cite>
+                <span>Guarulhos, SP</span>
+              </footer>
+            </blockquote>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-banner">
+        <div class="container cta-banner__inner">
+          <h2>Hora de ligar a chave?</h2>
+          <p>Reserve sua visita ou fale com um consultor agora — resposta no mesmo dia.</p>
+          <a href="#contato" class="btn btn--primary">Iniciar conversa</a>
+        </div>
+      </section>
+
+      <section class="section" id="contato">
+        <div class="container contact">
+          <header class="section__head">
+            <p class="eyebrow"><span class="eyebrow__dot"></span> Fale com a equipe</p>
+            <h2>Estamos na linha de chegada</h2>
+            <p>Envie sua mensagem ou use nossos canais diretos — retorno ágil garantido.</p>
+          </header>
+          <div class="contact__grid">
+            <form class="contact-form" id="contact-form" novalidate>
+              <label class="field">
+                <span>Nome</span>
+                <input type="text" name="name" required placeholder="Seu nome" />
+              </label>
+              <label class="field">
+                <span>E-mail</span>
+                <input type="email" name="email" required placeholder="email@exemplo.com" />
+              </label>
+              <label class="field">
+                <span>Telefone</span>
+                <input type="tel" name="phone" placeholder="(11) 99999-9999" />
+              </label>
+              <label class="field field--full">
+                <span>Mensagem</span>
+                <textarea
+                  name="message"
+                  rows="4"
+                  required
+                  placeholder="Modelo de interesse, dúvidas..."
+                ></textarea>
+              </label>
+              <button type="submit" class="btn btn--primary">Enviar solicitação</button>
+              <p class="form-feedback" id="form-feedback" role="status" hidden></p>
+            </form>
+            <aside class="contact-info">
+              <div class="contact-info__item">
+                <h3>Endereço</h3>
+                <p>Av. das Nações, 1200 — Moema<br />São Paulo, SP</p>
+              </div>
+              <div class="contact-info__item">
+                <h3>Horário</h3>
+                <p>Seg–Sex: 9h às 19h<br />Sáb: 9h às 14h</p>
+              </div>
+              <div class="contact-info__item">
+                <h3>Telefone</h3>
+                <p><a href="tel:+551140020300">(11) 4002-0300</a></p>
+              </div>
+              <div class="contact-info__item">
+                <h3>WhatsApp</h3>
+                <p><a href="https://wa.me/5511999990000" target="_blank" rel="noopener">(11) 99999-0000</a></p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <a href="#topo" class="logo logo--footer">
+          <span class="logo__mark">SC</span>
+          <span class="logo__text"><strong>Super</strong><span>Car</span></span>
+        </a>
+        <p class="footer__copy">© <span id="year"></span> Super Car. Todos os direitos reservados.</p>
+        <nav class="footer__links" aria-label="Rodapé">
+          <a href="#estoque">Estoque</a>
+          <a href="#contato">Contato</a>
+          <a href="#">Política de privacidade</a>
+        </nav>
+      </div>
+    </footer>
+
+    <dialog class="modal" id="car-modal" aria-labelledby="modal-title">
+      <div class="modal__backdrop" data-close></div>
+      <article class="modal__panel">
+        <button type="button" class="modal__close" data-close aria-label="Fechar">×</button>
+        <div class="modal__media" id="modal-media"></div>
+        <div class="modal__body">
+          <h2 id="modal-title"></h2>
+          <p class="modal__price" id="modal-price"></p>
+          <ul class="modal__specs" id="modal-specs"></ul>
+          <p id="modal-desc"></p>
+          <a href="#contato" class="btn btn--primary" data-close>Quero este veículo</a>
+        </div>
+      </article>
+    </dialog>
+
+    <script src="js/data.js" defer></script>
+    <script src="js/app.js" defer></script>
+  </body>
+</html>
