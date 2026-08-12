@@ -12,7 +12,7 @@ https://jorgeramalho.github.io/Supercar/
 | Description | Seminovos premium com curadoria, certificação e financiamento ágil em São Paulo |
 | Canonical | Pages URL |
 | Favicon | `assets/logos/favicon.svg` |
-| OG / Twitter | title, description, image (Audi TTS) |
+| OG / Twitter | title, description, image (Audi TTS WebP) |
 | robots.txt | Allow all + sitemap |
 | sitemap.xml | Home, estoque, contato, privacidade |
 | JSON-LD | `AutoDealer` + `LocalBusiness` |

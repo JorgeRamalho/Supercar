@@ -1,5 +1,5 @@
 /** Imagem padrão se a foto do veículo não carregar */
-const CAR_IMAGE_FALLBACK = "assets/images/catalog/audi-tts-2023.png";
+const CAR_IMAGE_FALLBACK = "assets/images/catalog/audi-tts-2023.webp";
 
 const CARS = [
   {
@@ -13,7 +13,7 @@ const CARS = [
     category: "sedan",
     price: 189900,
     tag: "Destaque",
-    image: "assets/images/catalog/bmw-320i-m-sport.png",
+    image: "assets/images/catalog/bmw-320i-m-sport.webp",
     description:
       "Pacote M Sport, teto solar e interior em couro. Revisões em concessionária, único dono.",
   },
@@ -28,7 +28,7 @@ const CARS = [
     category: "suv",
     price: 245000,
     tag: "SUV",
-    image: "assets/images/catalog/audi-q5-2021.png",
+    image: "assets/images/catalog/audi-q5-2021.webp",
     description:
       "Quattro, faróis Matrix LED e painel Virtual Cockpit. Excelente para família e viagens.",
   },
@@ -44,7 +44,7 @@ const CARS = [
     category: "suv",
     price: 132500,
     tag: "Aventura",
-    image: "assets/images/catalog/jeep-compass-limited.png",
+    image: "assets/images/catalog/jeep-compass-limited.webp",
     description:
       "Tração 4x4, bom torque e acabamento premium. Ideal para cidade e estrada de terra.",
   },
@@ -59,7 +59,7 @@ const CARS = [
     category: "sedan",
     price: 178000,
     tag: "Luxo",
-    image: "assets/images/catalog/mercedes-c180.png",
+    image: "assets/images/catalog/mercedes-c180.webp",
     description:
       "Elegância Mercedes com pacote Avantgarde. Interior impecável e revisões em dia.",
   },
@@ -74,7 +74,7 @@ const CARS = [
     category: "pickup",
     price: 289000,
     tag: "Pickup",
-    image: "assets/images/catalog/toyota-hilux-srx.png",
+    image: "assets/images/catalog/toyota-hilux-srx.webp",
     description:
       "Versão topo SRX, 4x4 e multimídia completa. Referência em retenção de valor.",
   },
@@ -89,7 +89,7 @@ const CARS = [
     category: "suv",
     price: 124900,
     tag: "Seminovo",
-    image: "assets/images/catalog/hyundai-creta-ultimate.png",
+    image: "assets/images/catalog/hyundai-creta-ultimate.webp",
     description:
       "Baixa quilometragem, garantia de fábrica remanescente e pacote Ultimate completo.",
   },
@@ -104,7 +104,7 @@ const CARS = [
     category: "suv",
     price: 115900,
     tag: "Econômico",
-    image: "assets/images/catalog/nissan-kicks-advance.png",
+    image: "assets/images/catalog/nissan-kicks-advance.webp",
     description:
       "Pacote Advance com câmera 360° e central multimídia. Único dono e IPVA em dia.",
   },
@@ -119,7 +119,7 @@ const CARS = [
     category: "sedan",
     price: 128900,
     tag: "Top",
-    image: "assets/images/catalog/honda-civic-touring.png",
+    image: "assets/images/catalog/honda-civic-touring.webp",
     description:
       "Honda Sensing, teto solar e acabamento Touring. Impecável por dentro e por fora.",
   },
@@ -134,7 +134,7 @@ const CARS = [
     category: "hatch",
     price: 150000,
     tag: "Esportivo",
-    image: "assets/images/catalog/audi-tts-2023.png",
+    image: "assets/images/catalog/audi-tts-2023.webp",
     description:
       "Audi TTS com acabamento esportivo, tração quattro e motor turbo. Foto real do veículo em estoque.",
   },
@@ -149,7 +149,7 @@ const CARS = [
     category: "suv",
     price: 318000,
     tag: "Luxo",
-    image: "assets/images/catalog/porsche-macan-s.png",
+    image: "assets/images/catalog/porsche-macan-s.webp",
     description:
       "Pacote S, suspensão adaptativa e interior em couro. Histórico de revisões na rede Porsche.",
   },
@@ -164,7 +164,7 @@ const CARS = [
     category: "sedan",
     price: 242000,
     tag: "Híbrido",
-    image: "assets/images/catalog/lexus-es-300h-luxury.png",
+    image: "assets/images/catalog/lexus-es-300h-luxury.webp",
     description:
       "Sedan híbrido silencioso, pacote Luxury e baixo consumo. Conforto executivo e tecnologia Lexus.",
   },
@@ -179,7 +179,7 @@ const CARS = [
     category: "pickup",
     price: 278000,
     tag: "Pickup",
-    image: "assets/images/catalog/ford-ranger-limited.png",
+    image: "assets/images/catalog/ford-ranger-limited.webp",
     description:
       "Cabine dupla Limited, 4x4 e multimídia SYNC. Ideal para trabalho pesado e lazer.",
   },

@@ -20,11 +20,13 @@ Projeto-SuperCar/
 ├── robots.txt                 # crawlers
 ├── sitemap.xml                # mapa do site
 ├── .gitignore                 # configuração Git
+├── .github/workflows/ci.yml   # smoke checks
 ├── README.md                  # documentação de entrada
 ├── css/                       # estilos
 │   ├── variables.css          # tokens de design
 │   └── styles.css             # layout e componentes
 ├── js/                        # scripts
+│   ├── site.js                # NAP e canais (fonte operacional)
 │   ├── data.js                # catálogo (fonte de dados)
 │   └── app.js                 # UI, filtros, modal, marquee
 ├── assets/                    # mídia estática

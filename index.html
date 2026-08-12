@@ -22,7 +22,7 @@
     <meta property="og:url" content="https://jorgeramalho.github.io/Supercar/" />
     <meta
       property="og:image"
-      content="https://jorgeramalho.github.io/Supercar/assets/images/catalog/audi-tts-2023.png"
+      content="https://jorgeramalho.github.io/Supercar/assets/images/catalog/audi-tts-2023.webp"
     />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Super Car | Seminovos Premium" />
@@ -32,25 +32,27 @@
     />
     <meta
       name="twitter:image"
-      content="https://jorgeramalho.github.io/Supercar/assets/images/catalog/audi-tts-2023.png"
+      content="https://jorgeramalho.github.io/Supercar/assets/images/catalog/audi-tts-2023.webp"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/variables.css" />
     <link rel="stylesheet" href="css/styles.css" />
-    <script type="application/ld+json">
+    <script type="application/ld+json" id="structured-data">
       {
         "@context": "https://schema.org",
         "@type": ["AutoDealer", "LocalBusiness"],
         "name": "Super Car",
         "description": "Seminovos premium com curadoria, certificação e financiamento ágil em São Paulo.",
         "url": "https://jorgeramalho.github.io/Supercar/",
-        "image": "https://jorgeramalho.github.io/Supercar/assets/images/catalog/audi-tts-2023.png",
-        "telephone": "+55-11-4002-0300",
+        "image": "https://jorgeramalho.github.io/Supercar/assets/images/catalog/audi-tts-2023.webp",
+        "telephone": "+551140020300",
+        "email": "privacidade@supercar.exemplo",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Av. das Nações, 1200",
@@ -106,7 +108,7 @@
         <nav class="nav" id="nav-menu" aria-label="Principal">
           <a href="#estoque">Estoque</a>
           <a href="#diferenciais">Diferenciais</a>
-          <a href="#depoimentos">Depoimentos</a>
+          <a href="#faq">FAQ</a>
           <a href="#contato" class="nav__cta">Agendar visita</a>
         </nav>
       </div>
@@ -135,13 +137,21 @@
           </div>
           <div class="hero__visual">
             <figure class="hero-media">
-              <img
-                src="assets/images/catalog/audi-tts-2023.png"
-                alt="Audi TTS 2023 disponível no estoque Super Car"
-                width="900"
-                height="600"
-                loading="eager"
-              />
+              <picture>
+                <source
+                  srcset="assets/images/catalog/audi-tts-2023.webp"
+                  type="image/webp"
+                />
+                <img
+                  src="assets/images/catalog/audi-tts-2023.png"
+                  alt="Audi TTS 2023 disponível no estoque Super Car"
+                  width="900"
+                  height="600"
+                  loading="eager"
+                  fetchpriority="high"
+                  decoding="async"
+                />
+              </picture>
             </figure>
           </div>
         </div>
@@ -267,6 +277,10 @@
           <header class="section__head section__head--center">
             <p class="eyebrow"><span class="eyebrow__dot"></span> Na voz do cliente</p>
             <h2>Quem já acelerou conosco</h2>
+            <p class="section__note">
+              Relatos ilustrativos do tipo de experiência que a Super Car busca entregar.
+              Substitua por depoimentos reais com autorização antes da operação comercial.
+            </p>
           </header>
           <div class="testimonials">
             <blockquote class="testimonial">
@@ -303,6 +317,54 @@
         </div>
       </section>
 
+      <section class="section" id="faq">
+        <div class="container">
+          <header class="section__head section__head--center">
+            <p class="eyebrow"><span class="eyebrow__dot"></span> Dúvidas frequentes</p>
+            <h2>Antes de vir à loja</h2>
+            <p>Respostas diretas sobre laudo, crédito, troca e visita.</p>
+          </header>
+          <div class="faq" role="list">
+            <details class="faq__item" role="listitem">
+              <summary>O laudo de 120 pontos cobre o quê?</summary>
+              <p>
+                Inspeção de mecânica, elétrica, estrutura, pintura e documentação antes do
+                veículo entrar na vitrine. Você recebe o resumo na visita — sem surpresa na
+                entrega.
+              </p>
+            </details>
+            <details class="faq__item" role="listitem">
+              <summary>Em quanto tempo sai a análise de crédito?</summary>
+              <p>
+                Simulação na hora com os bancos parceiros. Em condições ideais, retorno em até
+                48 horas úteis. Leve documentos pessoais e comprovante de renda para agilizar.
+              </p>
+            </details>
+            <details class="faq__item" role="listitem">
+              <summary>Aceitam troca do usado?</summary>
+              <p>
+                Sim. Avaliamos o seu veículo com critérios de mercado e, quando fizer sentido,
+                abatemos o valor na mesma negociação — sem burocracia desnecessária.
+              </p>
+            </details>
+            <details class="faq__item" role="listitem">
+              <summary>As fotos são do carro em estoque?</summary>
+              <p>
+                Cada anúncio usa a foto da unidade listada. Confirme disponibilidade e estado
+                na visita ou pelo WhatsApp antes de fechar — o estoque gira com frequência.
+              </p>
+            </details>
+            <details class="faq__item" role="listitem">
+              <summary>Posso agendar test-drive?</summary>
+              <p>
+                Pode. Reserve pelo formulário ou WhatsApp com o modelo de interesse, preferência
+                de data e horário. Confirmamos a disponibilidade da unidade no mesmo dia.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
       <section class="cta-banner">
         <div class="container cta-banner__inner">
           <h2>Hora de ligar a chave?</h2>
@@ -318,6 +380,11 @@
             <h2>Estamos na linha de chegada</h2>
             <p>Envie sua mensagem ou use nossos canais diretos — retorno ágil garantido.</p>
           </header>
+          <p class="demo-banner" id="demo-banner" hidden>
+            Canais abaixo são de demonstração do projeto. Atualize
+            <code>js/site.js</code>
+            com telefone, WhatsApp e endereço reais.
+          </p>
           <div class="contact__grid">
             <form class="contact-form" id="contact-form" novalidate>
               <label class="field">
@@ -347,19 +414,27 @@
             <aside class="contact-info">
               <div class="contact-info__item">
                 <h3>Endereço</h3>
-                <p>Av. das Nações, 1200 — Moema<br />São Paulo, SP</p>
+                <p id="contact-address"></p>
               </div>
               <div class="contact-info__item">
                 <h3>Horário</h3>
-                <p>Seg–Sex: 9h às 19h<br />Sáb: 9h às 14h</p>
+                <p id="contact-hours"></p>
               </div>
               <div class="contact-info__item">
                 <h3>Telefone</h3>
-                <p><a href="tel:+551140020300">(11) 4002-0300</a></p>
+                <p><a id="contact-phone" href="tel:+551140020300">(11) 4002-0300</a></p>
               </div>
               <div class="contact-info__item">
                 <h3>WhatsApp</h3>
-                <p><a href="https://wa.me/5511999990000" target="_blank" rel="noopener">(11) 99999-0000</a></p>
+                <p>
+                  <a
+                    id="contact-whatsapp"
+                    href="https://wa.me/5511999990000"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >(11) 99999-0000</a
+                  >
+                </p>
               </div>
             </aside>
           </div>
@@ -375,7 +450,9 @@
               Usamos os dados do formulário apenas para retornar o contato sobre veículos e
               serviços da Super Car. Não vendemos informações a terceiros. Para solicitações
               LGPD, escreva para
-              <a href="mailto:privacidade@supercar.exemplo">privacidade@supercar.exemplo</a>
+              <a id="privacy-email" href="mailto:privacidade@supercar.exemplo"
+                >privacidade@supercar.exemplo</a
+              >
               ou fale pelos canais oficiais da loja.
             </p>
           </header>
@@ -392,6 +469,7 @@
         <p class="footer__copy">© <span id="year"></span> Super Car. Todos os direitos reservados.</p>
         <nav class="footer__links" aria-label="Rodapé">
           <a href="#estoque">Estoque</a>
+          <a href="#faq">FAQ</a>
           <a href="#contato">Contato</a>
           <a href="#privacidade">Política de privacidade</a>
         </nav>
@@ -413,7 +491,8 @@
       </article>
     </dialog>
 
-    <script src="js/data.js" defer></script>
-    <script src="js/app.js" defer></script>
+    <script src="js/site.js?v=5" defer></script>
+    <script src="js/data.js?v=5" defer></script>
+    <script src="js/app.js?v=5" defer></script>
   </body>
 </html>

@@ -35,7 +35,8 @@ Projeto-SuperCar/
 │   ├── variables.css      # tokens (cores, tipografia, marquee)
 │   └── styles.css         # layout e componentes
 ├── js/
-│   ├── data.js            # veículos e URLs de imagem
+│   ├── site.js            # NAP, WhatsApp, e-mail (trocar em produção)
+│   ├── data.js            # veículos e imagens do estoque
 │   └── app.js             # catálogo, filtros, modal, marquee
 ├── assets/
 │   ├── images/
@@ -80,3 +81,13 @@ Projeto-SuperCar/
 ## Stack
 
 HTML5 · CSS3 (custom properties) · JavaScript vanilla — sem bundler.
+
+## Produção
+
+1. Edite `js/site.js` (telefone, WhatsApp, endereço, e-mail LGPD)
+2. Defina `demoNotice: false`
+3. Push em `main` — GitHub Pages + workflow CI (`.github/workflows/ci.yml`)
+
+## Fases
+
+Ver [docs/fases.md](docs/fases.md) — fases 0–6 concluídas no código; falta só NAP real.

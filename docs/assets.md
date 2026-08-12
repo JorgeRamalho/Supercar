@@ -1,43 +1,42 @@
 # Inventário de assets
 
-Registro dos arquivos de mídia versionados e onde são referenciados.
-
 ## `assets/images/hero/`
 
-| Arquivo | Uso | Referência |
-|---------|-----|------------|
-| `lamborghini-huracan.png` | Reserva de campanha / hero alternativo | pasta `hero/` (não usado no hero atual) |
+| Arquivo | Uso |
+|---------|-----|
+| `lamborghini-huracan.png` | Reserva de campanha |
 
 ## `assets/images/catalog/`
 
-| Arquivo | Veículo | Referência |
-|---------|---------|------------|
-| `audi-tts-2023.png` | Audi TTS 2023 (+ hero atual) | `js/data.js`, `index.html` |
-| `audi-q5-2021.png` | Audi Q5 2.0 TFSI | `js/data.js` |
-| `bmw-320i-m-sport.png` | BMW 320i M Sport | `js/data.js` |
-| `ford-ranger-limited.png` | Ford Ranger Limited | `js/data.js` |
-| `honda-civic-touring.png` | Honda Civic Touring | `js/data.js` |
-| `hyundai-creta-ultimate.png` | Hyundai Creta Ultimate | `js/data.js` |
-| `jeep-compass-limited.png` | Jeep Compass Limited | `js/data.js` |
-| `lexus-es-300h-luxury.png` | Lexus ES 300h Luxury | `js/data.js` |
-| `mercedes-c180.png` | Mercedes-Benz C180 | `js/data.js` |
-| `nissan-kicks-advance.png` | Nissan Kicks Advance | `js/data.js` |
-| `porsche-macan-s.png` | Porsche Macan S | `js/data.js` |
-| `toyota-hilux-srx.png` | Toyota Hilux SRX | `js/data.js` |
+Cada veículo tem **PNG** (fallback) + **WebP** (preferencial em `js/data.js`).
 
-Fallback de imagem quebrada: `audi-tts-2023.png` (`CAR_IMAGE_FALLBACK` em `js/data.js`).
+| Base | Veículo |
+|------|---------|
+| `audi-tts-2023` | Audi TTS (+ hero) |
+| `audi-q5-2021` | Audi Q5 |
+| `bmw-320i-m-sport` | BMW 320i |
+| `ford-ranger-limited` | Ford Ranger |
+| `honda-civic-touring` | Honda Civic |
+| `hyundai-creta-ultimate` | Hyundai Creta |
+| `jeep-compass-limited` | Jeep Compass |
+| `lexus-es-300h-luxury` | Lexus ES 300h |
+| `mercedes-c180` | Mercedes C180 |
+| `nissan-kicks-advance` | Nissan Kicks |
+| `porsche-macan-s` | Porsche Macan |
+| `toyota-hilux-srx` | Toyota Hilux |
+
+Fallback: `audi-tts-2023.webp` → `.png` se necessário.
 
 ## `assets/logos/`
 
-| Arquivo | Uso | Referência |
-|---------|-----|------------|
-| `favicon.svg` | Favicon do site | `index.html` |
-| `lexus.svg` | Logo no marquee | `js/app.js` → `MARQUEE_BRANDS` |
+| Arquivo | Uso |
+|---------|-----|
+| `favicon.svg` | Favicon |
+| `lexus.svg` | Marquee |
 
-## Regras de inclusão
+## Regras
 
-1. Foto de hero → `assets/images/hero/`
-2. Foto de veículo do estoque → `assets/images/catalog/`
-3. Logo / ícone de marca local → `assets/logos/`
-4. Nome em `kebab-case`, descritivo: `marca-modelo[-variante].ext`
-5. Não versionar dumps de editor, capturas de teste ou nomes com path de SO (`c__Users_...`)
+1. Hero → `assets/images/hero/`
+2. Estoque → `assets/images/catalog/` (gerar WebP ao adicionar PNG)
+3. Logos → `assets/logos/`
+4. Nomes `kebab-case`

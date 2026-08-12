@@ -14,52 +14,51 @@ Roteiro de continuidade. Cada fase tem objetivo, entregáveis e critério de pro
 - Assets em `hero/` e `catalog/`
 - Auditoria Playwright + checklist `acoes-imediatas.md`
 
-## Fase 2 — Conversão e clareza (concluída no código)
+## Fase 2 — Conversão e clareza (concluída)
 
 - SEO head (favicon, OG, canonical)
 - Hero alinhado ao estoque
 - Lead via WhatsApp
 - Privacidade mínima + skip link
 
-**Deploy:** commit/push da Auditoria Operacional fecha A1 e atualiza o GitHub Pages.
-
 ## Fase 3 — SEO técnico e mídia local (concluída)
+
+- Catálogo 100% local, robots, sitemap, JSON-LD, docs SEO/conteúdo, a11y modal
+
+## Fase 4 — Conteúdo e prova social (concluída no código)
 
 | Entrega | Status |
 |---------|--------|
-| Catálogo 100% com imagens locais | Feito |
-| `robots.txt` + `sitemap.xml` | Feito |
-| JSON-LD `LocalBusiness` / `AutoDealer` | Feito |
-| Docs `conteudo.md` + `seo.md` | Feito |
-| A11y do modal (foco) | Feito |
+| FAQ na página (`#faq`) | Feito |
+| Disclaimer nos depoimentos | Feito |
+| NAP centralizado em `js/site.js` + hidratação | Feito |
+| Banner de demonstração enquanto `demoNotice: true` | Feito |
+| Trocar NAP/depoimentos por dados reais | Operacional (editar `js/site.js`) |
 
-## Fase 4 — Conteúdo e prova social (próxima)
+## Fase 5 — Performance e polish (concluída)
 
-1. Substituir depoimentos genéricos por casos reais (ou disclaimer claro)
-2. FAQ curto (financiamento, laudo, garantia, troca)
-3. Endereço/telefone/WhatsApp reais de produção
-4. E-mail LGPD real em `#privacidade`
+| Entrega | Status |
+|---------|--------|
+| Subset de fontes Google (pesos usados) | Feito |
+| Marquee só com marcas do estoque | Feito |
+| WebP do catálogo + fallback PNG | Feito |
+| `fetchpriority` no hero, `sizes` nos cards | Feito |
+| `prefers-reduced-motion` no marquee | Feito |
 
-## Fase 5 — Performance e polish
+## Fase 6 — Operação e crescimento (base concluída)
 
-1. Self-host ou subset das fontes Google
-2. Reduzir marquee (menos marcas / less DOM)
-3. WebP + `srcset` nas fotos do catálogo
-4. `prefers-reduced-motion` já existe — auditar animações restantes
+| Entrega | Status |
+|---------|--------|
+| CI GitHub Actions (smoke) | Feito |
+| Hook `formEndpoint` (Formspree/Getform) | Feito (opt-in em `SITE`) |
+| Eventos CTA/lead em `dataLayer` | Feito |
+| Domínio custom | Operacional (GitHub Pages / DNS) |
+| Analytics com ID real | Operacional (`SITE.analyticsId`) |
+| CMS / planilha → JSON | Futuro opcional |
 
-## Fase 6 — Operação e crescimento
+## Como colocar em produção real
 
-1. Domínio custom + HTTPS
-2. Analytics (privacy-friendly) e eventos de CTA/WhatsApp
-3. Formulário com backend (Formspree/Netlify) além do WhatsApp
-4. CMS leve ou planilha → JSON para estoque (opcional)
-5. CI: lint HTML + smoke Playwright no Pages
-
-## Ordem sugerida daqui pra frente
-
-```
-A1 commit/push → validar Pages
-→ Fase 4 conteúdo real
-→ Fase 5 performance
-→ Fase 6 operação
-```
+1. Editar `js/site.js` (telefone, WhatsApp, endereço, e-mail)
+2. Definir `demoNotice: false`
+3. Opcional: `formEndpoint` e `analyticsId`
+4. Push em `main` → Pages + CI

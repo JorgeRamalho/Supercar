@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  smoke:
+    name: Smoke checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Estrutura obrigatória
+        run: |
+          test -f index.html
+          test -f robots.txt
+          test -f sitemap.xml
+          test -f js/site.js
+          test -f js/data.js
+          test -f js/app.js
+          test -f css/styles.css
+          test -f css/variables.css
+          test -f assets/logos/favicon.svg
+          test -d assets/images/catalog
+          test -d docs
+
+      - name: Catálogo sem Unsplash
+        run: |
+          if grep -qi 'unsplash' js/data.js; then
+            echo "js/data.js ainda referencia Unsplash"
+            exit 1
+          fi
+
+      - name: Assets WebP do estoque
+        run: |
+          count=$(find assets/images/catalog -name '*.webp' | wc -l)
+          echo "webp files: $count"
+          test "$count" -ge 12
+
+      - name: NAP centralizado
+        run: |
+          grep -q 'var SITE' js/site.js
+          grep -q 'hydrateSiteInfo' js/app.js
+          grep -q 'id="faq"' index.html

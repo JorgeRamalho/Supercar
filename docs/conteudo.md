@@ -36,7 +36,7 @@ Guia para textos da Super Car (Fase 4).
 | Contato | Converter em conversa |
 | Privacidade | Clareza LGPD |
 
-## FAQ sugerido (próxima implementação)
+## FAQ (implementado em `#faq`)
 
 1. O laudo de 120 pontos cobre o quê?
 2. Em quanto tempo sai a análise de crédito?
@@ -44,10 +44,9 @@ Guia para textos da Super Car (Fase 4).
 4. As fotos são do carro em estoque?
 5. Posso agendar test-drive?
 
-## Placeholders a trocar em produção
+## Placeholders de produção
 
-- WhatsApp `5511999990000`
-- Telefone `(11) 4002-0300`
-- E-mail `privacidade@supercar.exemplo`
-- Endereço Av. das Nações (demo)
-- Depoimentos com nomes fictícios — marcar como ilustrativos ou substituir
+Edite **apenas** `js/site.js` e defina `demoNotice: false` quando for ao ar:
+
+- WhatsApp / telefone / endereço / e-mail LGPD
+- Depoimentos: manter disclaimer ou substituir por casos reais autorizados

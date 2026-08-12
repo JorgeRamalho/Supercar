@@ -21,37 +21,36 @@ const yearEl = document.getElementById("year");
 const MARQUEE_ICON_BASE =
   "https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons";
 
-/** Grandes marcas — logo + nome + link externo (site oficial) */
-const MARQUEE_BRANDS = [
-  { name: "BMW", icon: "bmw", url: "https://www.bmw.com.br" },
-  { name: "Mercedes", icon: "mercedes", url: "https://www.mercedes-benz.com.br" },
-  { name: "Audi", icon: "audi", url: "https://www.audi.com.br" },
-  { name: "Porsche", icon: "porsche", url: "https://www.porsche.com/brazil/pt" },
-  { name: "Ferrari", icon: "ferrari", url: "https://www.ferrari.com" },
-  { name: "Lamborghini", icon: "lamborghini", url: "https://www.lamborghini.com" },
-  { name: "Maserati", icon: "maserati", url: "https://www.maserati.com" },
-  { name: "Bentley", icon: "bentley", url: "https://www.bentleymotors.com" },
-  { name: "Rolls-Royce", icon: "rollsroyce", url: "https://www.rolls-roycemotorcars.com" },
-  { name: "Toyota", icon: "toyota", url: "https://www.toyota.com.br" },
-  { name: "Honda", icon: "honda", url: "https://www.honda.com.br" },
-  { name: "Nissan", icon: "nissan", url: "https://www.nissan.com.br" },
-  { name: "Hyundai", icon: "hyundai", url: "https://www.hyundai.com.br" },
-  { name: "Kia", icon: "kia", url: "https://www.kia.com.br" },
-  { name: "Ford", icon: "ford", url: "https://www.ford.com.br" },
-  { name: "Chevrolet", icon: "chevrolet", url: "https://www.chevrolet.com.br" },
-  { name: "Volkswagen", icon: "volkswagen", url: "https://www.vw.com.br" },
-  { name: "Jeep", icon: "jeep", url: "https://www.jeep.com.br" },
-  { name: "Land Rover", icon: "landrover", url: "https://www.landrover.com.br" },
-  { name: "Volvo", icon: "volvo", url: "https://www.volvocars.com/br" },
-  { name: "Lexus", src: "assets/logos/lexus.svg", local: true, url: "https://www.lexus.com.br" },
-  { name: "Mazda", icon: "mazda", url: "https://www.mazda.com.br" },
-  { name: "Subaru", icon: "subaru", url: "https://www.subaru.com.br" },
-  { name: "Renault", icon: "renault", url: "https://www.renault.com.br" },
-  { name: "Fiat", icon: "fiat", url: "https://www.fiat.com.br" },
-  { name: "Peugeot", icon: "peugeot", url: "https://www.peugeot.com.br" },
-  { name: "Citroën", icon: "citroen", url: "https://www.citroen.com.br" },
-  { name: "Alfa Romeo", icon: "alfaromeo", url: "https://www.alfaromeo.com.br" },
-];
+/** Metadados só das marcas presentes no estoque (marquee enxuto). */
+const BRAND_META = {
+  Audi: { icon: "audi", url: "https://www.audi.com.br" },
+  BMW: { icon: "bmw", url: "https://www.bmw.com.br" },
+  Ford: { icon: "ford", url: "https://www.ford.com.br" },
+  Honda: { icon: "honda", url: "https://www.honda.com.br" },
+  Hyundai: { icon: "hyundai", url: "https://www.hyundai.com.br" },
+  Jeep: { icon: "jeep", url: "https://www.jeep.com.br" },
+  Lexus: {
+    src: "assets/logos/lexus.svg",
+    local: true,
+    url: "https://www.lexus.com.br",
+  },
+  "Mercedes-Benz": {
+    icon: "mercedes",
+    url: "https://www.mercedes-benz.com.br",
+  },
+  Nissan: { icon: "nissan", url: "https://www.nissan.com.br" },
+  Porsche: { icon: "porsche", url: "https://www.porsche.com/brazil/pt" },
+  Toyota: { icon: "toyota", url: "https://www.toyota.com.br" },
+};
+
+function trackEvent(name, detail) {
+  const payload = { name, detail, at: Date.now() };
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push(payload);
+  if (typeof SITE !== "undefined" && SITE.analyticsId) {
+    console.info("[analytics]", SITE.analyticsId, payload);
+  }
+}
 
 function initBrands() {
   const brands = [...new Set(CARS.map((c) => c.brand))].sort();
@@ -66,6 +65,11 @@ function initBrands() {
 function initMarquee() {
   const track = document.getElementById("marquee-track");
   if (!track) return;
+
+  const brands = [...new Set(CARS.map((c) => c.brand))]
+    .sort()
+    .map((name) => ({ name, ...(BRAND_META[name] || {}) }))
+    .filter((brand) => brand.icon || brand.src);
 
   const itemHtml = (brand) => {
     const src = brand.src || `${MARQUEE_ICON_BASE}/${brand.icon}.svg`;
@@ -87,7 +91,7 @@ function initMarquee() {
     return `<a class="marquee__link" href="${brand.url}" target="_blank" rel="noopener noreferrer" title="Visitar site ${brand.name} (abre em nova aba)" aria-label="Visitar site oficial da ${brand.name}">${inner}</a>`;
   };
 
-  const block = MARQUEE_BRANDS.map(itemHtml).join("");
+  const block = brands.map(itemHtml).join("");
   track.innerHTML = block + block;
 }
 
@@ -116,10 +120,17 @@ function setupCarImage(img, src) {
   const fallback =
     typeof CAR_IMAGE_FALLBACK !== "undefined" ? CAR_IMAGE_FALLBACK : src;
   img.addEventListener("error", () => {
+    if (src.endsWith(".webp") && !img.dataset.webpFailed) {
+      img.dataset.webpFailed = "1";
+      img.src = src.replace(/\.webp$/i, ".png");
+      return;
+    }
     if (img.dataset.fallbackApplied) return;
     img.dataset.fallbackApplied = "1";
-    img.src = fallback;
-  }, { once: true });
+    img.src = fallback.endsWith(".webp")
+      ? fallback.replace(/\.webp$/i, ".png")
+      : fallback;
+  });
   img.src = src;
 }
 
@@ -141,7 +152,7 @@ function renderCard(car) {
   article.innerHTML = `
     <div class="car-card__img-wrap">
       <span class="car-card__tag">${car.tag}</span>
-      <img alt="${car.brand} ${car.model}" loading="lazy" width="800" height="500" data-src="${car.image}" />
+      <img alt="${car.brand} ${car.model}" loading="lazy" decoding="async" width="800" height="500" sizes="(max-width: 600px) 92vw, (max-width: 900px) 45vw, 360px" data-src="${car.image}" />
     </div>
     ${divider}
     <div class="car-card__body">
@@ -281,11 +292,14 @@ function initFilters() {
   });
 }
 
-const WHATSAPP_NUMBER = "5511999990000";
-
 function buildWhatsAppUrl(data) {
+  const number =
+    typeof SITE !== "undefined" && SITE.whatsappE164
+      ? SITE.whatsappE164
+      : "5511999990000";
+  const brand = typeof SITE !== "undefined" && SITE.name ? SITE.name : "Super Car";
   const lines = [
-    "Olá, Super Car! Gostaria de agendar uma conversa.",
+    `Olá, ${brand}! Gostaria de agendar uma conversa.`,
     "",
     `Nome: ${data.name}`,
     `E-mail: ${data.email}`,
@@ -293,14 +307,100 @@ function buildWhatsAppUrl(data) {
   if (data.phone) lines.push(`Telefone: ${data.phone}`);
   lines.push("", "Mensagem:", data.message);
   const text = encodeURIComponent(lines.join("\n"));
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
+  return `https://wa.me/${number}?text=${text}`;
+}
+
+function hydrateSiteInfo() {
+  if (typeof SITE === "undefined") return;
+
+  const address = document.getElementById("contact-address");
+  if (address) {
+    address.innerHTML = `${SITE.addressLine1}<br />${SITE.addressLine2}`;
+  }
+
+  const hours = document.getElementById("contact-hours");
+  if (hours) {
+    hours.innerHTML = `${SITE.hoursWeekday}<br />${SITE.hoursSaturday}`;
+  }
+
+  const phone = document.getElementById("contact-phone");
+  if (phone) {
+    phone.href = `tel:${SITE.phoneTel}`;
+    phone.textContent = SITE.phoneDisplay;
+  }
+
+  const whatsapp = document.getElementById("contact-whatsapp");
+  if (whatsapp) {
+    whatsapp.href = `https://wa.me/${SITE.whatsappE164}`;
+    whatsapp.textContent = SITE.whatsappDisplay;
+  }
+
+  const privacy = document.getElementById("privacy-email");
+  if (privacy) {
+    privacy.href = `mailto:${SITE.emailPrivacy}`;
+    privacy.textContent = SITE.emailPrivacy;
+  }
+
+  const demo = document.getElementById("demo-banner");
+  if (demo) demo.hidden = !SITE.demoNotice;
+
+  const schemaEl = document.getElementById("structured-data");
+  if (schemaEl) {
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": ["AutoDealer", "LocalBusiness"],
+      name: SITE.name,
+      description: SITE.tagline,
+      url: SITE.url,
+      image: SITE.image,
+      telephone: SITE.phoneTel,
+      email: SITE.emailPrivacy,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: SITE.streetAddress,
+        addressLocality: SITE.addressLocality,
+        addressRegion: SITE.addressRegion,
+        addressCountry: SITE.addressCountry,
+      },
+      openingHoursSpecification: [
+        {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          opens: "09:00",
+          closes: "19:00",
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: "Saturday",
+          opens: "09:00",
+          closes: "14:00",
+        },
+      ],
+      areaServed: SITE.addressLocality,
+      priceRange: "$$",
+    };
+    schemaEl.textContent = JSON.stringify(schema);
+  }
+}
+
+async function postFormEndpoint(payload) {
+  if (typeof SITE === "undefined" || !SITE.formEndpoint) return;
+  try {
+    await fetch(SITE.formEndpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify(payload),
+    });
+  } catch (err) {
+    console.warn("Falha ao enviar para formEndpoint:", err);
+  }
 }
 
 function initForm() {
   const form = document.getElementById("contact-form");
   const feedback = document.getElementById("form-feedback");
 
-  form?.addEventListener("submit", (e) => {
+  form?.addEventListener("submit", async (e) => {
     e.preventDefault();
     if (!form.checkValidity()) {
       form.reportValidity();
@@ -315,6 +415,9 @@ function initForm() {
       message: String(formData.get("message") || "").trim(),
     };
 
+    trackEvent("lead_whatsapp", { brand: payload.name });
+    await postFormEndpoint(payload);
+
     const url = buildWhatsAppUrl(payload);
     window.open(url, "_blank", "noopener,noreferrer");
 
@@ -323,6 +426,14 @@ function initForm() {
       "Abrimos o WhatsApp com sua mensagem. Se nada abrir, use o número nos canais ao lado.";
     feedback.className = "form-feedback form-feedback--success";
     form.reset();
+  });
+}
+
+function initCtaTracking() {
+  document.querySelectorAll('a[href="#estoque"], a[href="#contato"], .nav__cta').forEach((el) => {
+    el.addEventListener("click", () => {
+      trackEvent("cta_click", { href: el.getAttribute("href"), text: el.textContent?.trim() });
+    });
   });
 }
 
@@ -352,7 +463,7 @@ function observeReveals() {
 
 function initSectionReveals() {
   const sections = document.querySelectorAll(
-    ".section__head, .feature-card, .testimonial"
+    ".section__head, .feature-card, .testimonial, .faq__item"
   );
   sections.forEach((el) => el.classList.add("reveal"));
 
@@ -372,6 +483,7 @@ function initSectionReveals() {
 
 function init() {
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+  hydrateSiteInfo();
   initMarquee();
   initBrands();
   initFilters();
@@ -379,6 +491,7 @@ function init() {
   initModal();
   initNav();
   initForm();
+  initCtaTracking();
   renderCatalog();
   initSectionReveals();
 }

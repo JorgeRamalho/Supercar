@@ -14,6 +14,7 @@ flowchart TB
     STY[css/styles.css]
   end
   subgraph data [Dados]
+    SITECFG[js/site.js]
     DATA[js/data.js]
   end
   subgraph behavior [Comportamento]
@@ -26,18 +27,20 @@ flowchart TB
   end
 
   HTML --> VAR --> STY
+  HTML --> SITECFG --> APP
   HTML --> DATA --> APP
   HTML --> HERO
   APP --> CAT
   APP --> LOGOS
   APP --> DATA
+  APP --> SITECFG
 ```
 
 ## Responsabilidades por arquivo
 
 ### `index.html`
-- Estrutura semântica das seções (hero, estoque, diferenciais, depoimentos, contato)
-- Pontos de ancoragem e acessibilidade básica (`aria-*`, `dialog`)
+- Estrutura semântica das seções (hero, estoque, FAQ, depoimentos, contato)
+- Pontos de ancoragem e acessibilidade básica (`aria-*`, `dialog`, `details`)
 - Referências aos estilos e scripts
 
 ### `css/variables.css`
@@ -48,12 +51,17 @@ flowchart TB
 - Layout, componentes e estados da interface
 - Responsividade e `prefers-reduced-motion`
 
+### `js/site.js`
+- NAP e canais (telefone, WhatsApp, endereço, e-mail LGPD)
+- Flag `demoNotice` para banner de demonstração
+
 ### `js/data.js`
 - Array `CARS` (catálogo)
 - Paths locais em `assets/images/catalog/`
 - Fallback de imagem (`CAR_IMAGE_FALLBACK`)
 
 ### `js/app.js`
+- Hidrata contato + JSON-LD a partir de `SITE`
 - Filtros (busca, marca, categoria, preço)
 - Render do catálogo e modal de detalhe (foco/trap)
 - Marquee de marcas (CDN Simple Icons + logo local Lexus)
