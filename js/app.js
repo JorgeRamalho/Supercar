@@ -188,7 +188,10 @@ function renderCatalog() {
   observeReveals();
 }
 
+let lastFocusBeforeModal = null;
+
 function openModal(car) {
+  lastFocusBeforeModal = document.activeElement;
   document.getElementById("modal-title").textContent = `${car.brand} ${car.model}`;
   document.getElementById("modal-price").textContent = formatPrice(car.price);
   document.getElementById("modal-desc").textContent = car.description;
@@ -204,10 +207,16 @@ function openModal(car) {
     <li>${car.category.toUpperCase()}</li>
   `;
   modal.showModal();
+  modal.querySelector(".modal__close")?.focus();
 }
 
 function closeModal() {
+  if (!modal.open) return;
   modal.close();
+  if (lastFocusBeforeModal instanceof HTMLElement) {
+    lastFocusBeforeModal.focus();
+  }
+  lastFocusBeforeModal = null;
 }
 
 function initModal() {
@@ -217,6 +226,24 @@ function initModal() {
   modal.addEventListener("cancel", (e) => {
     e.preventDefault();
     closeModal();
+  });
+  modal.addEventListener("keydown", (e) => {
+    if (e.key !== "Tab" || !modal.open) return;
+    const focusable = [
+      ...modal.querySelectorAll(
+        'button:not([disabled]), [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      ),
+    ].filter((el) => !el.hasAttribute("disabled") && el.offsetParent !== null);
+    if (focusable.length === 0) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
   });
 }
 
@@ -254,6 +281,21 @@ function initFilters() {
   });
 }
 
+const WHATSAPP_NUMBER = "5511999990000";
+
+function buildWhatsAppUrl(data) {
+  const lines = [
+    "Olá, Super Car! Gostaria de agendar uma conversa.",
+    "",
+    `Nome: ${data.name}`,
+    `E-mail: ${data.email}`,
+  ];
+  if (data.phone) lines.push(`Telefone: ${data.phone}`);
+  lines.push("", "Mensagem:", data.message);
+  const text = encodeURIComponent(lines.join("\n"));
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
+}
+
 function initForm() {
   const form = document.getElementById("contact-form");
   const feedback = document.getElementById("form-feedback");
@@ -264,9 +306,21 @@ function initForm() {
       form.reportValidity();
       return;
     }
+
+    const formData = new FormData(form);
+    const payload = {
+      name: String(formData.get("name") || "").trim(),
+      email: String(formData.get("email") || "").trim(),
+      phone: String(formData.get("phone") || "").trim(),
+      message: String(formData.get("message") || "").trim(),
+    };
+
+    const url = buildWhatsAppUrl(payload);
+    window.open(url, "_blank", "noopener,noreferrer");
+
     feedback.hidden = false;
     feedback.textContent =
-      "Mensagem enviada com sucesso! Em breve um consultor entrará em contato.";
+      "Abrimos o WhatsApp com sua mensagem. Se nada abrir, use o número nos canais ao lado.";
     feedback.className = "form-feedback form-feedback--success";
     form.reset();
   });
@@ -298,7 +352,7 @@ function observeReveals() {
 
 function initSectionReveals() {
   const sections = document.querySelectorAll(
-    ".section__head, .feature-card, .timeline li, .testimonial"
+    ".section__head, .feature-card, .testimonial"
   );
   sections.forEach((el) => el.classList.add("reveal"));
 

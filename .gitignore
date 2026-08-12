@@ -3,14 +3,17 @@
 Thumbs.db
 desktop.ini
 
-# Editor / IDE
+# Editor / IDE (não versionar — raiz permanece enxuta)
 .vscode/
 .cursor/
+*.code-workspace
 
-# Temporários e placeholders
+# Temporários, testes e dumps fora do padrão
 *.tmp
-test-lambo.png
-c__Users_jorge_*
+*.temp
+test-*.png
+test-*.jpg
+c__Users_*
 
 # Segredos (se adicionar depois)
 .env

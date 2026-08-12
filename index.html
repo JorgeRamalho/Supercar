@@ -7,7 +7,33 @@
       name="description"
       content="Super Car — seminovos premium com curadoria, certificação e financiamento ágil em São Paulo."
     />
+    <meta name="theme-color" content="#0a0f16" />
     <title>Super Car | Seminovos Premium</title>
+    <link rel="canonical" href="https://jorgeramalho.github.io/Supercar/" />
+    <link rel="icon" href="assets/logos/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Super Car" />
+    <meta property="og:title" content="Super Car | Seminovos Premium" />
+    <meta
+      property="og:description"
+      content="Seminovos premium com curadoria, laudo em 120 pontos e financiamento ágil em São Paulo."
+    />
+    <meta property="og:url" content="https://jorgeramalho.github.io/Supercar/" />
+    <meta
+      property="og:image"
+      content="https://jorgeramalho.github.io/Supercar/assets/images/catalog/audi-tts-2023.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Super Car | Seminovos Premium" />
+    <meta
+      name="twitter:description"
+      content="Seminovos premium com curadoria, laudo em 120 pontos e financiamento ágil em São Paulo."
+    />
+    <meta
+      name="twitter:image"
+      content="https://jorgeramalho.github.io/Supercar/assets/images/catalog/audi-tts-2023.png"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -16,8 +42,43 @@
     />
     <link rel="stylesheet" href="css/variables.css" />
     <link rel="stylesheet" href="css/styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": ["AutoDealer", "LocalBusiness"],
+        "name": "Super Car",
+        "description": "Seminovos premium com curadoria, certificação e financiamento ágil em São Paulo.",
+        "url": "https://jorgeramalho.github.io/Supercar/",
+        "image": "https://jorgeramalho.github.io/Supercar/assets/images/catalog/audi-tts-2023.png",
+        "telephone": "+55-11-4002-0300",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Av. das Nações, 1200",
+          "addressLocality": "São Paulo",
+          "addressRegion": "SP",
+          "addressCountry": "BR"
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "09:00",
+            "closes": "19:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Saturday",
+            "opens": "09:00",
+            "closes": "14:00"
+          }
+        ],
+        "areaServed": "São Paulo",
+        "priceRange": "$$"
+      }
+    </script>
   </head>
   <body>
+    <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
     <div class="ambient" aria-hidden="true">
       <div class="ambient__orb ambient__orb--gold"></div>
       <div class="ambient__orb ambient__orb--cyan"></div>
@@ -45,14 +106,13 @@
         <nav class="nav" id="nav-menu" aria-label="Principal">
           <a href="#estoque">Estoque</a>
           <a href="#diferenciais">Diferenciais</a>
-          <a href="#processo">Como funciona</a>
           <a href="#depoimentos">Depoimentos</a>
           <a href="#contato" class="nav__cta">Agendar visita</a>
         </nav>
       </div>
     </header>
 
-    <main>
+    <main id="conteudo">
       <section class="hero">
         <div class="container hero__grid">
           <div class="hero__content">
@@ -72,42 +132,42 @@
               <a href="#estoque" class="btn btn--primary">Explorar estoque</a>
               <a href="#contato" class="btn btn--ghost">Reservar visita</a>
             </div>
-            <dl class="hero__stats">
-              <div>
-                <dt>320+</dt>
-                <dd>Entregas realizadas</dd>
-              </div>
-              <div>
-                <dt>4.9</dt>
-                <dd>Nota dos clientes</dd>
-              </div>
-              <div>
-                <dt>48h</dt>
-                <dd>Crédito aprovado</dd>
-              </div>
-            </dl>
           </div>
           <div class="hero__visual">
-            <div class="hero-card">
+            <figure class="hero-media">
               <img
-                src="assets/images/hero-lamborghini-huracan.png"
-                alt="Lamborghini Huracán laranja em destaque"
+                src="assets/images/catalog/audi-tts-2023.png"
+                alt="Audi TTS 2023 disponível no estoque Super Car"
                 width="900"
                 height="600"
                 loading="eager"
               />
-              <div class="hero-card__badge">
-                <span>Seleção da semana</span>
-                <strong>Lamborghini Huracán</strong>
-                <em>2025 · R$ 2.200.000</em>
-              </div>
-            </div>
+            </figure>
           </div>
         </div>
       </section>
 
       <section class="marquee" aria-label="Marcas disponíveis">
         <div class="marquee__track" id="marquee-track"></div>
+      </section>
+
+      <section class="trust-strip" aria-label="Números Super Car">
+        <div class="container">
+          <dl class="stats-strip">
+            <div>
+              <dt>320+</dt>
+              <dd>Entregas realizadas</dd>
+            </div>
+            <div>
+              <dt>4.9</dt>
+              <dd>Nota dos clientes</dd>
+            </div>
+            <div>
+              <dt>48h</dt>
+              <dd>Crédito aprovado</dd>
+            </div>
+          </dl>
+        </div>
       </section>
 
       <section class="section" id="estoque">
@@ -202,37 +262,6 @@
         </div>
       </section>
 
-      <section class="section" id="processo">
-        <div class="container process">
-          <header class="section__head">
-            <p class="eyebrow"><span class="eyebrow__dot"></span> Na pista certa</p>
-            <h2>Quatro etapas até a garagem</h2>
-          </header>
-          <ol class="timeline">
-            <li>
-              <span class="timeline__step">1</span>
-              <h3>Escolha com precisão</h3>
-              <p>Explore o catálogo online ou na loja e reserve seu test-drive pelo site ou WhatsApp.</p>
-            </li>
-            <li>
-              <span class="timeline__step">2</span>
-              <h3>Dirija e negocie</h3>
-              <p>Test-drive acompanhado e proposta personalizada com consultor dedicado.</p>
-            </li>
-            <li>
-              <span class="timeline__step">3</span>
-              <h3>Feche com clareza</h3>
-              <p>À vista, financiado ou com troca — toda a documentação sob nosso cuidado.</p>
-            </li>
-            <li>
-              <span class="timeline__step">4</span>
-              <h3>Entrega impecável</h3>
-              <p>Tanque cheio, revisão cortesia e manual do proprietário na hora da retirada.</p>
-            </li>
-          </ol>
-        </div>
-      </section>
-
       <section class="section section--alt" id="depoimentos">
         <div class="container">
           <header class="section__head section__head--center">
@@ -312,7 +341,7 @@
                   placeholder="Modelo de interesse, dúvidas..."
                 ></textarea>
               </label>
-              <button type="submit" class="btn btn--primary">Enviar solicitação</button>
+              <button type="submit" class="btn btn--primary">Falar no WhatsApp</button>
               <p class="form-feedback" id="form-feedback" role="status" hidden></p>
             </form>
             <aside class="contact-info">
@@ -336,6 +365,22 @@
           </div>
         </div>
       </section>
+
+      <section class="section section--alt" id="privacidade">
+        <div class="container">
+          <header class="section__head">
+            <p class="eyebrow"><span class="eyebrow__dot"></span> Transparência</p>
+            <h2>Política de privacidade</h2>
+            <p>
+              Usamos os dados do formulário apenas para retornar o contato sobre veículos e
+              serviços da Super Car. Não vendemos informações a terceiros. Para solicitações
+              LGPD, escreva para
+              <a href="mailto:privacidade@supercar.exemplo">privacidade@supercar.exemplo</a>
+              ou fale pelos canais oficiais da loja.
+            </p>
+          </header>
+        </div>
+      </section>
     </main>
 
     <footer class="footer">
@@ -348,7 +393,7 @@
         <nav class="footer__links" aria-label="Rodapé">
           <a href="#estoque">Estoque</a>
           <a href="#contato">Contato</a>
-          <a href="#">Política de privacidade</a>
+          <a href="#privacidade">Política de privacidade</a>
         </nav>
       </div>
     </footer>

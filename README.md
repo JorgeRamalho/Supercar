@@ -1,8 +1,8 @@
-# Super Car — Loja de Carros Usados
+# Super Car — Seminovos Premium
 
-Site institucional e catálogo dinâmico para a loja **Super Car** (seminovos premium).
+Site institucional e catálogo dinâmico da loja **Super Car**.
 
-## Como visualizar
+## Quick start
 
 Abra `index.html` no navegador ou use um servidor local:
 
@@ -10,61 +10,73 @@ Abra `index.html` no navegador ou use um servidor local:
 python -m http.server 8080
 ```
 
-Acesse: `http://localhost:8080`
+Acesse: [http://localhost:8080](http://localhost:8080)
 
-## Design
+## Pasta raiz (enxuta)
 
-- **Paleta:** fundo profundo, ouro luxo e ciano dinâmico
-- **Degradês:** mesh no fundo, cards e CTAs
-- **Tipografia:** [Barlow Condensed](https://fonts.google.com/specimen/Barlow+Condensed) (títulos) + [Plus Jakarta Sans](https://fonts.google.com/specimen/Plus+Jakarta+Sans) (corpo)
+Somente o essencial permanece na raiz:
 
-## Funcionalidades
+| Arquivo | Função |
+|---------|--------|
+| `index.html` | Entrada da aplicação |
+| `.gitignore` | Regras de versionamento |
+| `README.md` | Este guia |
 
-- Hero com destaque (Lamborghini Huracán) e estatísticas
-- Catálogo com busca, filtro por marca/categoria e faixa de preço
-- Modal com detalhes do veículo
-- Faixa animada de marcas com logo, legenda e link para site oficial
-- Menu responsivo e formulário de contato
-- Fallback de imagens e suporte a `prefers-reduced-motion`
+Demais artefatos ficam em pastas dedicadas — ver [docs/estrutura.md](docs/estrutura.md).
 
 ## Estrutura
 
 ```
 Projeto-SuperCar/
 ├── index.html
+├── .gitignore
+├── README.md
 ├── css/
-│   ├── variables.css    # tokens (cores, tipografia, marquee)
-│   └── styles.css
+│   ├── variables.css      # tokens (cores, tipografia, marquee)
+│   └── styles.css         # layout e componentes
 ├── js/
-│   ├── data.js          # veículos e URLs de imagem
-│   └── app.js           # catálogo, filtros, modal, marquee
+│   ├── data.js            # veículos e URLs de imagem
+│   └── app.js             # catálogo, filtros, modal, marquee
 ├── assets/
-│   ├── images/          # fotos reais do estoque e hero
-│   └── logos/           # ícones locais (ex.: Lexus)
-└── README.md
+│   ├── images/
+│   │   ├── hero/          # destaque do primeiro viewport
+│   │   └── catalog/       # fotos do estoque
+│   └── logos/             # logos locais (ex.: Lexus)
+└── docs/                  # documentação profissional
+    ├── estrutura.md
+    ├── arquitetura.md
+    ├── assets.md
+    └── convencoes.md
 ```
 
-## Git / GitHub
+## Documentação
 
-Repositório versionado em commits por camada (base → JS → assets → docs). Para publicar:
+| Documento | Conteúdo |
+|-----------|----------|
+| [docs/estrutura.md](docs/estrutura.md) | Mapa de pastas e arquivos |
+| [docs/arquitetura.md](docs/arquitetura.md) | Camadas, fluxos e dependências |
+| [docs/assets.md](docs/assets.md) | Inventário de mídia e referências |
+| [docs/convencoes.md](docs/convencoes.md) | Nomenclatura e regras de organização |
+| [docs/auditoria.md](docs/auditoria.md) | Auditoria SEO/UX/UI (Playwright) e backlog |
+| [docs/acoes-imediatas.md](docs/acoes-imediatas.md) | Checklist P0/P1/P2 de execução |
+| [docs/fases.md](docs/fases.md) | Roteiro de fases do projeto |
+| [docs/conteudo.md](docs/conteudo.md) | Tom de voz e conteúdo |
+| [docs/seo.md](docs/seo.md) | SEO on-page e local |
 
-```bash
-gh auth login
-gh repo create Projeto-SuperCar --public --source=. --remote=origin --push
-```
+## Funcionalidades
 
-Ou crie o repositório no GitHub e depois:
+- Hero com destaque (Lamborghini Huracán) e estatísticas
+- Catálogo com busca, filtro por marca/categoria e faixa de preço
+- Modal com detalhes do veículo
+- Faixa animada de marcas (logos + links oficiais)
+- Menu responsivo e formulário de contato
+- Fallback de imagens e suporte a `prefers-reduced-motion`
 
-```bash
-git remote add origin https://github.com/SEU_USUARIO/Projeto-SuperCar.git
-git push -u origin main
-```
+## Design
 
-## Histórico de evolução (resumo)
+- **Paleta:** fundo profundo, ouro luxo e ciano dinâmico
+- **Tipografia:** [Barlow Condensed](https://fonts.google.com/specimen/Barlow+Condensed) (títulos) + [Plus Jakarta Sans](https://fonts.google.com/specimen/Plus+Jakarta+Sans) (corpo)
 
-| Etapa | Conteúdo |
-|-------|----------|
-| Base | HTML semântico, tokens CSS, layout hero e seções |
-| Catálogo | `CARS` em `data.js`, cards, filtros e modal |
-| Mídia | Imagens locais (Honda, Nissan, Mercedes, Hilux, Lexus, hero) |
-| Marcas | Carrossel com logos, legendas, links externos e velocidade ajustável (`--marquee-duration`) |
+## Stack
+
+HTML5 · CSS3 (custom properties) · JavaScript vanilla — sem bundler.

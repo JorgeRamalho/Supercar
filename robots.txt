@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jorgeramalho.github.io/Supercar/sitemap.xml

@@ -280,17 +280,39 @@ textarea {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-md);
-  margin-bottom: var(--space-2xl);
 }
 
-.hero__stats {
+.hero-media {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 0;
+  background: transparent;
+}
+
+.hero-media img {
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  display: block;
+}
+
+.trust-strip {
+  position: relative;
+  z-index: 1;
+  padding: var(--space-xl) 0;
+  border-block: 1px solid var(--color-border);
+  background: rgba(17, 26, 36, 0.45);
+}
+
+.stats-strip {
   display: flex;
-  gap: var(--space-2xl);
-  padding-top: var(--space-xl);
-  border-top: 1px solid var(--color-border);
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-xl) var(--space-2xl);
+  margin: 0;
 }
 
-.hero__stats dt {
+.stats-strip dt {
   font-family: var(--font-display);
   font-size: var(--text-2xl);
   font-weight: 800;
@@ -300,69 +322,27 @@ textarea {
   color: transparent;
 }
 
-.hero__stats dd {
+.stats-strip dd {
   font-size: var(--text-sm);
   color: var(--color-text-muted);
   margin-top: var(--space-xs);
 }
 
-.hero-card {
-  position: relative;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  border: 1px solid var(--color-border-strong);
-  box-shadow: var(--shadow-lg), var(--shadow-glow-gold);
-  background: var(--gradient-surface);
-}
-
-.hero-card::before {
-  content: "";
+.skip-link {
   position: absolute;
-  inset: 0;
-  background: var(--gradient-card-shine);
-  pointer-events: none;
-  z-index: 1;
-}
-
-.hero-card img {
-  width: 100%;
-  aspect-ratio: 4/3;
-  object-fit: cover;
-}
-
-.hero-card__badge {
-  position: absolute;
-  bottom: var(--space-lg);
-  left: var(--space-lg);
-  right: var(--space-lg);
-  z-index: 2;
-  padding: var(--space-md) var(--space-lg);
-  border-radius: var(--radius-md);
-  background: var(--glass-bg);
-  backdrop-filter: blur(var(--glass-blur));
-  border: 1px solid var(--glass-border);
-}
-
-.hero-card__badge span {
-  font-family: var(--font-display);
-  font-size: var(--text-xs);
+  left: var(--space-md);
+  top: -100px;
+  z-index: 100;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  background: var(--color-gold-500);
+  color: var(--color-void);
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-caps);
-  color: var(--color-cyan-400);
+  text-decoration: none;
 }
 
-.hero-card__badge strong {
-  display: block;
-  font-family: var(--font-display);
-  font-size: var(--text-lg);
-  margin: var(--space-xs) 0;
-}
-
-.hero-card__badge em {
-  font-style: normal;
-  font-weight: 700;
-  color: var(--color-gold-300);
+.skip-link:focus {
+  top: var(--space-md);
 }
 
 /* Buttons */
@@ -826,54 +806,6 @@ textarea {
   font-size: var(--text-sm);
 }
 
-/* Timeline */
-.process {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: var(--space-3xl);
-  align-items: start;
-}
-
-.timeline {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xl);
-}
-
-.timeline li {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: var(--space-lg);
-  padding: var(--space-lg);
-  border-radius: var(--radius-md);
-  border: 1px solid var(--color-border);
-  background: var(--gradient-surface);
-}
-
-.timeline__step {
-  display: grid;
-  place-items: center;
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius-md);
-  font-family: var(--font-display);
-  font-weight: 800;
-  background: var(--gradient-brand);
-  color: var(--color-void);
-}
-
-.timeline h3 {
-  font-family: var(--font-display);
-  font-size: var(--text-lg);
-  margin-bottom: var(--space-xs);
-}
-
-.timeline p {
-  color: var(--color-text-muted);
-  font-size: var(--text-sm);
-}
-
 /* Testimonials */
 .testimonials {
   display: grid;
@@ -1176,7 +1108,6 @@ textarea {
 /* Responsive */
 @media (max-width: 900px) {
   .hero__grid,
-  .process,
   .contact__grid,
   .modal__panel {
     grid-template-columns: 1fr;
@@ -1220,7 +1151,7 @@ textarea {
 }
 
 @media (max-width: 600px) {
-  .hero__stats {
+  .stats-strip {
     flex-direction: column;
     gap: var(--space-lg);
   }

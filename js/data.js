@@ -1,9 +1,5 @@
-/** URL padronizada — recorte 800×500 para cards alinhados */
-const IMG = (photoId) =>
-  `https://images.unsplash.com/${photoId}?w=800&h=500&fit=crop&q=80&auto=format`;
-
-/** Imagem padrão se a URL do veículo não carregar */
-const CAR_IMAGE_FALLBACK = IMG("photo-1605034647645-441fa7574438");
+/** Imagem padrão se a foto do veículo não carregar */
+const CAR_IMAGE_FALLBACK = "assets/images/catalog/audi-tts-2023.png";
 
 const CARS = [
   {
@@ -17,7 +13,7 @@ const CARS = [
     category: "sedan",
     price: 189900,
     tag: "Destaque",
-    image: IMG("photo-1605034647645-441fa7574438"),
+    image: "assets/images/catalog/bmw-320i-m-sport.png",
     description:
       "Pacote M Sport, teto solar e interior em couro. Revisões em concessionária, único dono.",
   },
@@ -32,7 +28,7 @@ const CARS = [
     category: "suv",
     price: 245000,
     tag: "SUV",
-    image: IMG("photo-1769641156711-77a1aa293ffa"),
+    image: "assets/images/catalog/audi-q5-2021.png",
     description:
       "Quattro, faróis Matrix LED e painel Virtual Cockpit. Excelente para família e viagens.",
   },
@@ -48,7 +44,7 @@ const CARS = [
     category: "suv",
     price: 132500,
     tag: "Aventura",
-    image: IMG("photo-1765517238316-3da1a1d3feb7"),
+    image: "assets/images/catalog/jeep-compass-limited.png",
     description:
       "Tração 4x4, bom torque e acabamento premium. Ideal para cidade e estrada de terra.",
   },
@@ -63,7 +59,7 @@ const CARS = [
     category: "sedan",
     price: 178000,
     tag: "Luxo",
-    image: "assets/images/mercedes-c180.png",
+    image: "assets/images/catalog/mercedes-c180.png",
     description:
       "Elegância Mercedes com pacote Avantgarde. Interior impecável e revisões em dia.",
   },
@@ -78,7 +74,7 @@ const CARS = [
     category: "pickup",
     price: 289000,
     tag: "Pickup",
-    image: "assets/images/toyota-hilux-srx.png",
+    image: "assets/images/catalog/toyota-hilux-srx.png",
     description:
       "Versão topo SRX, 4x4 e multimídia completa. Referência em retenção de valor.",
   },
@@ -93,7 +89,7 @@ const CARS = [
     category: "suv",
     price: 124900,
     tag: "Seminovo",
-    image: IMG("photo-1748214547184-d994bfe53322"),
+    image: "assets/images/catalog/hyundai-creta-ultimate.png",
     description:
       "Baixa quilometragem, garantia de fábrica remanescente e pacote Ultimate completo.",
   },
@@ -108,7 +104,7 @@ const CARS = [
     category: "suv",
     price: 115900,
     tag: "Econômico",
-    image: "assets/images/nissan-kicks-advance.png",
+    image: "assets/images/catalog/nissan-kicks-advance.png",
     description:
       "Pacote Advance com câmera 360° e central multimídia. Único dono e IPVA em dia.",
   },
@@ -123,7 +119,7 @@ const CARS = [
     category: "sedan",
     price: 128900,
     tag: "Top",
-    image: "assets/images/honda-civic-touring.png",
+    image: "assets/images/catalog/honda-civic-touring.png",
     description:
       "Honda Sensing, teto solar e acabamento Touring. Impecável por dentro e por fora.",
   },
@@ -138,7 +134,7 @@ const CARS = [
     category: "hatch",
     price: 150000,
     tag: "Esportivo",
-    image: "assets/images/audi-tts-2023.png",
+    image: "assets/images/catalog/audi-tts-2023.png",
     description:
       "Audi TTS com acabamento esportivo, tração quattro e motor turbo. Foto real do veículo em estoque.",
   },
@@ -153,7 +149,7 @@ const CARS = [
     category: "suv",
     price: 318000,
     tag: "Luxo",
-    image: IMG("photo-1503376780353-7e6692767b70"),
+    image: "assets/images/catalog/porsche-macan-s.png",
     description:
       "Pacote S, suspensão adaptativa e interior em couro. Histórico de revisões na rede Porsche.",
   },
@@ -168,7 +164,7 @@ const CARS = [
     category: "sedan",
     price: 242000,
     tag: "Híbrido",
-    image: "assets/images/lexus-es-300h-luxury.png",
+    image: "assets/images/catalog/lexus-es-300h-luxury.png",
     description:
       "Sedan híbrido silencioso, pacote Luxury e baixo consumo. Conforto executivo e tecnologia Lexus.",
   },
@@ -183,7 +179,7 @@ const CARS = [
     category: "pickup",
     price: 278000,
     tag: "Pickup",
-    image: IMG("photo-1551830820-330a71b99659"),
+    image: "assets/images/catalog/ford-ranger-limited.png",
     description:
       "Cabine dupla Limited, 4x4 e multimídia SYNC. Ideal para trabalho pesado e lazer.",
   },
